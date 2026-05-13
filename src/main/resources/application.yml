@@ -1,0 +1,17 @@
+spring:
+  kafka:
+    streams:
+      application-id: motion-analytics-kstreams
+      bootstrap-servers: ${KAFKA_BOOTSTRAP_SERVERS:localhost:9092}
+      properties:
+        default.key.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        default.value.serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+        auto.offset.reset: latest
+        cache.max.bytes.buffering: 0
+        commit.interval.ms: 100
+
+app:
+  topics:
+    position: ${KAFKA_TOPIC_POSITION:motion-position}
+    collision: ${KAFKA_TOPIC_COLLISION:motion-collision}
+    analytics: ${KAFKA_TOPIC_ANALYTICS:motion-ball-analytics}

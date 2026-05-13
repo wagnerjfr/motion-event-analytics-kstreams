@@ -185,5 +185,16 @@ You can also browse the topic via **AKHQ** at `http://localhost:8081` (started a
 | JSON | Jackson 2.x |
 | Packaging | Maven + spring-boot-maven-plugin (fat JAR) |
 
-Equivalent to the Flink DataStream version at [motion-event-analytics-flink](https://github.com/wagnerjfr/motion-event-analytics-flink), but runs as a standalone JVM process — no Flink cluster required.
-# motion-event-analytics-kstreams
+## Kafka Streams vs Flink
+
+This app is the Kafka Streams counterpart of [motion-event-analytics-flink](https://github.com/wagnerjfr/motion-event-analytics-flink), which implements the same pipeline with Flink DataStream.
+
+| Aspect | Kafka Streams (this repo) | Flink DataStream |
+|---|---|---|
+| Runtime | Standalone JVM (Spring Boot) | Flink cluster (Session / Application mode) |
+| Cluster dependency | None | JobManager + TaskManager required |
+| State store | Persistent `KeyValueStore` (embedded) | State backend (RocksDB / Heap / Filesystem) |
+| Windowing | Manual sliding window via state trimming | Built-in `SlidingEventTimeWindows` |
+| JSON handling | StringSerde + manual parsing in `flatMap` | Custom `SerializationSchema` / `TypeInformation` |
+| Deployment | `java -jar` or Docker | `flink run` + cluster management |
+| Scaling | Single-process, partition-parallel within JVM | Distributed across TaskManagers |
