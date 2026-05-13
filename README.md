@@ -2,6 +2,8 @@
 
 Kafka Streams application that consumes motion position and collision events from Kafka and computes per-ball analytics in real time.
 
+**🤝 This project relates to [motion-event-producer](https://github.com/wagnerjfr/motion-event-producer).**
+
 ## Pipeline
 
 ```
