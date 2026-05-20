@@ -1,6 +1,6 @@
 package com.simulation.analytics.config;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.databind.ObjectMapper;
 import com.simulation.analytics.AppProperties;
 import com.simulation.analytics.model.*;
 import com.simulation.analytics.serde.JsonSerde;
